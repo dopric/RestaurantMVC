@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br/>
+<br />
 
 <div class="border backgroundWhite">
     <div class="row">
@@ -12,8 +12,40 @@
             <h2 class="text-info">Category List</h2>
         </div>
         <div class="col-6 text-right">
-            Create Category
+           <partial name="_CreateButtonPartial" />
+
         </div>
     </div>
+    <br />
+    <div>
+        <table class="table table-striped border">
+            @if (Model.Count() > 0)
+            {
+                <tr class="table-secondary">
+                    <th>
+                        @Html.DisplayNameFor(m => m.Name)
+                    </th>
+                    <th />
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Name)
+                        </td> DETAILS
+                        <td>
+                            EDIT | DELETE | DETAILS
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <p>No Categories found</p>
+            }
+        </table>
+    </div>
 </div>
+
 

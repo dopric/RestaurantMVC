@@ -13,6 +13,7 @@ namespace RestaurantMVC.Models
 
         [Required]
         [StringLength(50, MinimumLength =5)]
+        [Display(Name="Category Name")]
         public string Name { get; set; }
     }
 }

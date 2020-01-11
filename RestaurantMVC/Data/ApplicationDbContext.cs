@@ -15,5 +15,6 @@ namespace RestaurantMVC.Data
         }
 
         public DbSet<Category> Category { get; set; }
+        public DbSet<Subcategory> Subcategories { get; set; }
     }
 }

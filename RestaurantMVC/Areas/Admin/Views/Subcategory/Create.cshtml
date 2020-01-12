@@ -1,0 +1,69 @@
+﻿@model  RestaurantMVC.Models.ViewModels.SubcategoryAndCategoryViewModel;
+@using RestaurantMVC.Extensions;
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Subcategory</h1>
+<div class="border backgroundWhiteBorder row">
+    <div class="colum-8 border-right">
+        <partial name="_StatusMessage" model="Model.StatusMessage" />
+        <form method="post" asp-action="Create">
+           
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Subcategory.CategoryId" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <select id="ddlCategoryList"
+                            asp-for="Subcategory.CategoryId"
+                            asp-items="Model.CategoryList.ToSelectListItem(Model.Subcategory.CategoryId)"
+                            class="form-control"></select>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Subcategory.Name" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Subcategory.Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Subcategory.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-5 offset-3">
+                    <partial name="_CreateAndBackToListButton" />
+
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="col-3 offset-1">
+        @if (Model.SubcategoryList.Count() > 0)
+        {
+            <p>Existing Subcategories</p>
+
+            <div id="subcategoryList">
+                <ul class="list-group">
+                    @foreach (var subcat in Model.SubcategoryList)
+                    {
+                        <li>@subcat</li>
+                    }
+                </ul>
+            </div>
+        }
+        else
+        {
+           <p>No Subcategories found</p>
+        }
+    </div>
+
+
+
+</div>
